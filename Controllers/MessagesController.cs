@@ -7,6 +7,9 @@ using System.Web.Http;
 using System.Web.Http.Description;
 using Microsoft.Bot.Connector;
 using Newtonsoft.Json;
+using Microsoft.Bot.Builder.Dialogs;
+using MyBot.Dialogs;
+using MyBot.Models;
 
 namespace MyBot
 {
@@ -21,13 +24,7 @@ namespace MyBot
         {
             if (activity.Type == ActivityTypes.Message)
             {
-                ConnectorClient connector = new ConnectorClient(new Uri(activity.ServiceUrl));
-                // calculate something for us to return
-                int length = (activity.Text ?? string.Empty).Length;
-
-                // return our reply to the user
-                Activity reply = activity.CreateReply($"You sent {activity.Text} which was {length} characters");
-                await connector.Conversations.ReplyToActivityAsync(reply);
+                await Conversation.SendAsync(activity, MakeLuisDialog);
             }
             else
             {
@@ -35,6 +32,11 @@ namespace MyBot
             }
             var response = Request.CreateResponse(HttpStatusCode.OK);
             return response;
+        }
+
+        private IDialog<RoomReservation> MakeLuisDialog()
+        {
+            return Chain.From(() => new LUISDialog(RoomReservation.BuildForm));
         }
 
         private Activity HandleSystemMessage(Activity message)

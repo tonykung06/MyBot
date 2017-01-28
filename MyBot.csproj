@@ -120,13 +120,28 @@
   <ItemGroup>
     <Compile Include="App_Start\WebApiConfig.cs" />
     <Compile Include="Controllers\MessagesController.cs" />
+    <Compile Include="Dialogs\GreetingDialog.cs" />
+    <Compile Include="Dialogs\HotelBotDialog.cs" />
+    <Compile Include="Dialogs\LUISDialog.cs" />
+    <Compile Include="Models\FacebookModels\FacebookAddress.cs" />
+    <Compile Include="Models\FacebookModels\FacebookAdjustment.cs" />
+    <Compile Include="Models\FacebookModels\FacebookAttachment.cs" />
+    <Compile Include="Models\FacebookModels\FacebookButton.cs" />
+    <Compile Include="Models\FacebookModels\FacebookElement.cs" />
+    <Compile Include="Models\FacebookModels\FacebookMessage.cs" />
+    <Compile Include="Models\FacebookModels\FacebookPayload.cs" />
+    <Compile Include="Models\FacebookModels\FacebookPaymentSummary.cs" />
+    <Compile Include="Models\FacebookModels\FacebookPriceList.cs" />
+    <Compile Include="Models\FacebookModels\FacebookSummary.cs" />
     <Compile Include="Global.asax.cs">
       <DependentUpon>Global.asax</DependentUpon>
     </Compile>
+    <Compile Include="Models\RoomReservation.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
   </ItemGroup>
   <ItemGroup>
     <Content Include="packages.config" />
+    <None Include="Properties\PublishProfiles\MyBot20170128054900 - Web Deploy.pubxml" />
     <None Include="Web.Debug.config">
       <DependentUpon>Web.config</DependentUpon>
     </None>
@@ -134,6 +149,7 @@
       <DependentUpon>Web.config</DependentUpon>
     </None>
   </ItemGroup>
+  <ItemGroup />
   <PropertyGroup>
     <VisualStudioVersion Condition="'$(VisualStudioVersion)' == ''">10.0</VisualStudioVersion>
     <VSToolsPath Condition="'$(VSToolsPath)' == ''">$(MSBuildExtensionsPath32)\Microsoft\VisualStudio\v$(VisualStudioVersion)</VSToolsPath>
